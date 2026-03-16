@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/f5-exposure-verifier/inventory_snapshot",
+  "title": "InventorySnapshot",
+  "description": "Point-in-time snapshot of F5 inventory.",
+  "type": "object",
+  "required": [
+    "snapshot_id",
+    "f5_host",
+    "captured_at"
+  ],
+  "properties": {
+    "snapshot_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "f5_host": {
+      "type": "string"
+    },
+    "captured_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "virtual_servers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "ip_address",
+          "port"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "ip_address": {
+            "type": "string"
+          },
+          "port": {
+            "type": "integer"
+          },
+          "partition": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}
