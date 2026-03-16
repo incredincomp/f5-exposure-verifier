@@ -2,16 +2,16 @@
 
 from collections.abc import Generator
 
-from sqlalchemy import create_engine, text
+from sqlalchemy import Engine, create_engine, text
 from sqlalchemy.orm import Session, sessionmaker
 
 from app.config.settings import get_settings
 
-_engine = None
-_SessionLocal = None
+_engine: Engine | None = None
+_SessionLocal: sessionmaker[Session] | None = None
 
 
-def get_engine():
+def get_engine() -> Engine:
     """Return (and lazily create) the SQLAlchemy engine."""
     global _engine
     if _engine is None:
@@ -20,7 +20,7 @@ def get_engine():
     return _engine
 
 
-def get_session_factory() -> sessionmaker:
+def get_session_factory() -> sessionmaker[Session]:
     """Return (and lazily create) the session factory."""
     global _SessionLocal
     if _SessionLocal is None:
@@ -32,7 +32,7 @@ def get_session_factory() -> sessionmaker:
     return _SessionLocal
 
 
-def get_session() -> Generator[Session, None, None]:
+def get_session() -> Generator[Session]:
     """Yield a database session, closing it when done."""
     factory = get_session_factory()
     session: Session = factory()

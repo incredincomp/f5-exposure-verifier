@@ -4,7 +4,6 @@ from fastapi.testclient import TestClient
 
 from app.main import app
 
-
 client = TestClient(app)
 
 
@@ -16,8 +15,8 @@ def test_healthz_returns_200() -> None:
     assert data["status"] == "ok"
 
 
-def test_readyz_returns_200_or_200() -> None:
-    """GET /readyz must return 200. Database may be unavailable in unit tests."""
+def test_readyz_returns_200() -> None:
+    """GET /readyz must return 200 with status=ok and a database field."""
     response = client.get("/readyz")
     assert response.status_code == 200
     data = response.json()

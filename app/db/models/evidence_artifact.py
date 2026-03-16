@@ -1,7 +1,7 @@
 """EvidenceArtifact ORM model."""
 
 import uuid
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from sqlalchemy import DateTime, ForeignKey, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
@@ -24,5 +24,5 @@ class EvidenceArtifact(Base):
     content_hash: Mapped[str | None] = mapped_column(String(64), nullable=True)
     content: Mapped[str | None] = mapped_column(Text, nullable=True)
     collected_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True), default=lambda: datetime.now(timezone.utc)
+        DateTime(timezone=True), default=lambda: datetime.now(UTC)
     )

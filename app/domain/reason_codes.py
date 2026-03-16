@@ -1,9 +1,9 @@
 """Reason codes for verdicts and classifications."""
 
-from enum import Enum
+from enum import StrEnum
 
 
-class ReasonCode(str, Enum):
+class ReasonCode(StrEnum):
     """Structured reason codes used in verdicts."""
 
     # Inventory classification

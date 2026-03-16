@@ -26,3 +26,4 @@ coverage.xml
 *.pid
 .DS_Store
 Thumbs.db
+.ruff_cache/

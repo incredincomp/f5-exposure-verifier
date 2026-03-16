@@ -8,7 +8,6 @@ import pytest
 from app.contracts.verify_request import ExposureTarget, VerifyRequest
 from app.contracts.verify_result import EvidenceSummary, VerdictCode, VerifyResult
 
-
 FIXTURES_DIR = Path(__file__).parent.parent / "fixtures"
 
 
@@ -23,7 +22,9 @@ def test_verify_request_valid() -> None:
 
 def test_verify_request_requires_ip() -> None:
     """A VerifyRequest without an ip_address must fail validation."""
-    with pytest.raises(Exception):
+    from pydantic import ValidationError
+
+    with pytest.raises(ValidationError):
         ExposureTarget.model_validate({"port": 443})
 
 

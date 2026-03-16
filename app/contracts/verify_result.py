@@ -1,13 +1,13 @@
 """Verification result contract."""
 
 import uuid
-from datetime import datetime, timezone
-from enum import Enum
+from datetime import UTC, datetime
+from enum import StrEnum
 
 from pydantic import BaseModel, ConfigDict, Field
 
 
-class VerdictCode(str, Enum):
+class VerdictCode(StrEnum):
     """High-level verdict codes."""
 
     APPROVED = "APPROVED"
@@ -35,4 +35,4 @@ class VerifyResult(BaseModel):
     verdict: VerdictCode
     reason: str
     evidence: EvidenceSummary = Field(default_factory=EvidenceSummary)
-    completed_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    completed_at: datetime = Field(default_factory=lambda: datetime.now(UTC))

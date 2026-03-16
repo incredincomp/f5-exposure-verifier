@@ -1,11 +1,11 @@
 """Time utilities."""
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 
 def utcnow() -> datetime:
     """Return the current UTC datetime (timezone-aware)."""
-    return datetime.now(tz=timezone.utc)
+    return datetime.now(tz=UTC)
 
 
 def iso_utcnow() -> str:

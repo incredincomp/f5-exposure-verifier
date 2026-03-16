@@ -1,17 +1,10 @@
 """Callback delivery contract."""
 
-from datetime import datetime, timezone
-from enum import Enum
+from datetime import UTC, datetime
 
 from pydantic import BaseModel, ConfigDict, Field
 
 from app.contracts.verify_result import VerifyResult
-
-
-class CallbackStatus(str, Enum):
-    PENDING = "PENDING"
-    DELIVERED = "DELIVERED"
-    FAILED = "FAILED"
 
 
 class CallbackPayload(BaseModel):
@@ -21,4 +14,4 @@ class CallbackPayload(BaseModel):
 
     event: str = "verification.completed"
     result: VerifyResult
-    delivered_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    delivered_at: datetime = Field(default_factory=lambda: datetime.now(UTC))

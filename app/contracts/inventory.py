@@ -1,7 +1,7 @@
 """Inventory snapshot contract."""
 
 import uuid
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -25,4 +25,4 @@ class InventorySnapshot(BaseModel):
     snapshot_id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     f5_host: str
     virtual_servers: list[VirtualServerSummary] = Field(default_factory=list)
-    captured_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    captured_at: datetime = Field(default_factory=lambda: datetime.now(UTC))

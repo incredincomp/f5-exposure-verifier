@@ -1,6 +1,6 @@
 """F5 adapter data models."""
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 
 @dataclass
@@ -22,4 +22,3 @@ class F5PoolMemberData:
     ip_address: str
     port: int
     enabled: bool = True
-    nested_members: list["F5PoolMemberData"] = field(default_factory=list)

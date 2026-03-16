@@ -1,7 +1,7 @@
 """Verification request contract."""
 
 import uuid
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -25,6 +25,6 @@ class VerifyRequest(BaseModel):
     request_id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     source: str = Field(..., description="Upstream source system identifier")
     target: ExposureTarget
-    submitted_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    submitted_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
     callback_url: str | None = Field(default=None)
     metadata: dict[str, str] = Field(default_factory=dict)

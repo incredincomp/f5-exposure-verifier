@@ -13,10 +13,10 @@
 
 - `app/main.py` — FastAPI application factory, health routes registered
 - `app/api/routes_health.py` — `/healthz` and `/readyz` implemented
-- `app/api/routes_verify.py` — stub (501)
-- `app/api/routes_inventory.py` — stub (501)
-- `app/api/routes_requests.py` — stub (501)
-- `app/api/routes_verdicts.py` — stub (501)
+- `app/api/routes_verify.py` — stub (501): `POST /verify`
+- `app/api/routes_inventory.py` — stubs (501): `GET /inventory`, `POST /inventory/refresh`
+- `app/api/routes_requests.py` — stubs (501): `GET /requests`, `GET /requests/{request_id}`
+- `app/api/routes_verdicts.py` — stubs (501): `GET /verdicts`, `GET /verdicts/{verdict_id}`
 - `app/api/deps.py` — dependency injection stubs
 - `app/api/auth.py` — auth dependency stub
 - `app/config/settings.py` — Pydantic Settings model

@@ -62,8 +62,11 @@ mypy app/
 | GET | /readyz | ✅ Implemented |
 | POST | /api/v1/verify | 🚧 Stub (501) |
 | GET | /api/v1/inventory | 🚧 Stub (501) |
+| POST | /api/v1/inventory/refresh | 🚧 Stub (501) |
 | GET | /api/v1/requests | 🚧 Stub (501) |
+| GET | /api/v1/requests/{request_id} | 🚧 Stub (501) |
 | GET | /api/v1/verdicts | 🚧 Stub (501) |
+| GET | /api/v1/verdicts/{verdict_id} | 🚧 Stub (501) |
 
 ## Configuration
 

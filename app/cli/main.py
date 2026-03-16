@@ -24,8 +24,9 @@ def serve(
 @app.command()
 def db_upgrade() -> None:
     """Run Alembic database migrations."""
-    from alembic import command
     from alembic.config import Config
+
+    from alembic import command
 
     alembic_cfg = Config("alembic.ini")
     command.upgrade(alembic_cfg, "head")

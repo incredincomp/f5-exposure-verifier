@@ -1,7 +1,7 @@
 """Shared contract primitives."""
 
 import uuid
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -11,7 +11,7 @@ class TimestampedModel(BaseModel):
 
     model_config = ConfigDict(populate_by_name=True)
 
-    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    created_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
 
 
 class ErrorResponse(BaseModel):
