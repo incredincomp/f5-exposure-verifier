@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/f5-exposure-verifier/verify_result",
+  "title": "VerifyResult",
+  "description": "Outbound verification result.",
+  "type": "object",
+  "required": [
+    "result_id",
+    "request_id",
+    "verdict",
+    "reason",
+    "completed_at"
+  ],
+  "properties": {
+    "result_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "request_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "APPROVED",
+        "UNAPPROVED",
+        "UNKNOWN",
+        "ERROR"
+      ]
+    },
+    "reason": {
+      "type": "string"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "probe_count": {
+          "type": "integer"
+        },
+        "observations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}
